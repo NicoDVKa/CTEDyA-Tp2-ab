@@ -22,13 +22,14 @@ namespace Tp2
 			hijoIzquierdo.agregarHijoDerecho(new ArbolBinario<int>(4));
 
 			ArbolBinario<int> hijoDerecho=new ArbolBinario<int>(5);
+			
 			hijoDerecho.agregarHijoIzquierdo(new ArbolBinario<int>(6));
 			hijoDerecho.agregarHijoDerecho(new ArbolBinario<int>(7));
 
 			arbolBinarioA.agregarHijoIzquierdo(hijoIzquierdo);
 			arbolBinarioA.agregarHijoDerecho(hijoDerecho);
 
-
+			//*************************************************************************************************************
 			Console.Write("Preorden: ");
 			arbolBinarioA.preorden();//Funciona
 			Console.WriteLine();
@@ -48,15 +49,15 @@ namespace Tp2
 			Console.WriteLine("El dato {0} esta en el ab? {1}",dato,arbolBinarioA.incluye(dato));
 
 			
-			arbolBinarioA.agregarNodo(new ArbolBinario<int>(99));
-			
+			arbolBinarioA.agregarNodo(new ArbolBinario<int>(100));
 			Console.Write("Recorrido por niveles, despues de la insercion,: "); arbolBinarioA.recorridoPorNiveles();//Funciona
 			Console.WriteLine();
 
-			Console.WriteLine("Recorrido entre niveles:"); 
-			arbolBinarioA.recorridoEntreNiveles(0,3); //Funciona
+			Console.Write("Recorrido entre niveles:"); arbolBinarioA.recorridoEntreNiveles(0,3); //Funciona
 			Console.WriteLine();
-			
+
+			Console.WriteLine("El retardo de reenvio maximo es de: {0}", arbolBinarioA.retardoReenvio());
+
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true);
 		}

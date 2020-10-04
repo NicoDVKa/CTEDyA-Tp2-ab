@@ -11,7 +11,6 @@ namespace Tp2
 		private ArbolBinario<T> hijoIzquierdo;
 		private ArbolBinario<T> hijoDerecho;
 	
-		
 		public ArbolBinario(T dato) {
 			this.dato = dato;
 		}
@@ -104,7 +103,6 @@ namespace Tp2
 			
 		}
 		
-		//Recorrido por niveles
 		public void recorridoPorNiveles() {
 			Cola <ArbolBinario<T>> cola = new Cola<ArbolBinario<T>>();
 			cola.encolar(this);
@@ -119,7 +117,6 @@ namespace Tp2
 				}
 			}
 		}
-
 
 		//Contar Hojas
 		public int contarHojas(int hoja) {
@@ -209,6 +206,7 @@ namespace Tp2
 			}
 		}
 		
+		//Recorrido entre niveles
 		public void recorridoEntreNiveles(int n,int m) {
 
 			Cola<ArbolBinario<T>> cola = new Cola<ArbolBinario<T>>();
@@ -243,5 +241,37 @@ namespace Tp2
 			}
 
 		}
+
+		//Retardo Reenvio. Solo si el arbol es lleno.
+		public int retardoReenvio()
+		{
+			int retardoMaximo = 0;
+			int retardoIzquierdo= 0;
+			int retardoDerecho = 0;
+			int retardoTemp = 0;
+
+			if (this.getHijoIzquierdo()==null && this.getHijoDerecho()==null){
+				return int.Parse(this.getDatoRaiz().ToString());
+            }
+
+            if (this.getHijoIzquierdo()!=null) {
+				
+				retardoTemp += int.Parse(this.getDatoRaiz().ToString());
+				retardoTemp += this.getHijoIzquierdo().retardoReenvio();
+				if (retardoTemp > retardoIzquierdo) retardoIzquierdo=retardoTemp;
+			}
+
+            if (this.getHijoDerecho()!=null){
+				retardoTemp = 0;
+				retardoTemp += int.Parse(this.getDatoRaiz().ToString());
+				retardoTemp += this.getHijoDerecho().retardoReenvio();
+				if (retardoTemp > retardoDerecho) retardoDerecho = retardoTemp;
+			}
+
+			if (retardoIzquierdo >= retardoDerecho) retardoMaximo = retardoIzquierdo;
+			if (retardoIzquierdo < retardoDerecho) retardoMaximo = retardoDerecho;
+
+			return retardoMaximo;
+        }
 	}
 }

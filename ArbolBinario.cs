@@ -5,8 +5,6 @@ namespace Tp2
 {
 	public class ArbolBinario<T>
 	{
-		
-	
 		private T dato;
 		private ArbolBinario<T> hijoIzquierdo;
 		private ArbolBinario<T> hijoDerecho;
@@ -47,6 +45,8 @@ namespace Tp2
 			return this.hijoIzquierdo==null && this.hijoDerecho==null;
 		}
 		
+		//Recorridos
+
 		public void inorden() {
 			//Primero el hijo izquierdo luego la raiz y por ultimo el hijo derecho
 			
@@ -118,6 +118,8 @@ namespace Tp2
 			}
 		}
 
+		//===================================================================
+
 		//Contar Hojas
 		public int contarHojas(int hoja) {
 			
@@ -140,6 +142,7 @@ namespace Tp2
 			return hoja;
 			
 		}
+		
 		//Incluye
 		public bool incluye(T dato)
         {
